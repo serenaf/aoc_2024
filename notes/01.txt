@@ -1,0 +1,46 @@
+find the smallest number in left list
+find smallest number in right list
+save distance between them
+
+
+find second smallest number in left list
+find second smallest number in right list
+save distance between them
+
+
+Example:
+3   4
+4   3
+2   5
+1   3
+3   9
+3   3
+
+
+O(N2) algorithm
+compare each number with all other numbers in the list
+remove the smallest
+and continue with the rest of the list
+
+
+store the numbers in an array
+[3,4,2,1,3,3]
+sort the array n log n
+
+
+Input Reading:
+
+
+
+Similarity Score:
+
+3   4
+4   3
+2   5
+1   3
+3   9
+3   3
+
+
+store number and occurence of numer in a hash for list 2
+
