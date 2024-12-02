@@ -1,0 +1,38 @@
+Example
+7 6 4 2 1
+1 2 7 8 9
+9 7 6 2 1
+1 3 2 4 5
+8 6 4 4 1
+1 3 6 7 9
+
+
+number of safe reports
+
+adjacent numbers need to be either increasing or decreasing
+numbers must differ by at least one and at most three
+
+
+enumerator function each_cons
+
+problem dampener
+7 6 4 2 1 -> safe
+1 2 7 8 9
+unsafe because 2 and 7
+
+2 7 8 9
+1 7 8 9
+1 2 8 9
+1 2 7 8
+
+
+if line is safe fine
+
+otherwise for every unsafe line
+1...n leave out 0th element
+0, 2, 3, 4 leave out first element
+0, 1, 3, 4 leave out second element
+0, 1, 3, 4 leave out third element
+0, 1, 2, 3 leave out forth element
+
+
