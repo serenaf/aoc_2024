@@ -1,0 +1,32 @@
+read in the lines into a grid system
+
+[x,y] to character
+
+find the candidate coordinates, these are all the coordinates that start with an x
+for each candidate coordinate at pos[x,y]
+
+
+x-MAS
+
+valid x-mas
+m at pos[x,y]
+a at pos[x+1, y+1]
+s at pos[x+2, y+2]
+m at post[x, y+2]
+s at pos[x,y+2]
+
+maybe it is easier to start with find the A
+a at pos[x,y]
+
+pos[x-1, y-1]
+post[x-1, y+1]
+
+
+pos[x+1, y-1]
+post[x+1, y+1]
+
+
+make sure it says mas in both cases
+
+
+

@@ -1,6 +1,4 @@
 # rubocop:disable all
-require "pry"
-
 module Day03
   class << self
     def part_one
