@@ -12,29 +12,17 @@ module Day05
       end
       valid_lines = []
       File.readlines("inputs/05/05_numbers.txt").each do |line|
-        valid = true
         numbers = line.strip.split(",").map(&:to_i)
-        numbers.each_with_index do |number, index|
-          break unless valid
-          for i in index+1..numbers.length-1
-            break unless valid
-            if dependencies[numbers[index]].include?(numbers[i])
-              valid = true
-            else
-              valid = false
-            end
-          end
-        end
-        valid_lines << line if valid
-        puts valid_lines
+        sorted_numbers = numbers.sort { |a, b| sort_numbers(a, b, dependencies) }
+        valid_lines << numbers if sorted_numbers == numbers
       end
-      result = valid_lines.map { |line| Day05.find_middle_number(line.strip.split(",").map(&:to_i)) }.sum
+      result = valid_lines.map { |line| Day05.find_middle_number(line) }.sum
       puts result
     end
 
     def part_two
       dependencies = Hash.new { |h, k| h[k] = [] }
-      File.readlines("inputs/05/05_dependencies_real.txt").each do |line|
+      File.readlines("inputs/05/05_dependencies.txt").each do |line|
         number1, number2 = line.split("|").map(&:to_i)
         if dependencies[number1]
           dependencies[number1] << number2
@@ -43,23 +31,12 @@ module Day05
         end
       end
       valid_lines = []
-      File.readlines("inputs/05/05_numbers_real.txt").each do |line|
-        valid = true
+      File.readlines("inputs/05/05_numbers.txt").each do |line|
         numbers = line.strip.split(",").map(&:to_i)
-        numbers.each_with_index do |number, index|
-          break unless valid
-          for i in index+1..numbers.length-1
-            break unless valid
-            if dependencies[numbers[index]].include?(numbers[i])
-              valid = true
-            else
-              valid = false
-            end
-          end
-        end
-        valid_lines << line if valid
+        sorted_numbers = numbers.sort { |a, b| sort_numbers(a, b, dependencies) }
+        valid_lines << numbers if sorted_numbers == numbers
       end
-      invalid_lines = File.readlines("inputs/05/05_numbers_real.txt") - valid_lines
+      invalid_lines = File.readlines("inputs/05/05_numbers.txt") - valid_lines
       sum = 0
       invalid_lines.each do |line|
         numbers = line.strip.split(",").map(&:to_i)
@@ -78,6 +55,7 @@ module Day05
         0
       end
     end
+
     def find_middle_number(numbers)
       return 0 if numbers.length == 0
       l = numbers.length
